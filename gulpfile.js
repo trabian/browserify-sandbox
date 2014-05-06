@@ -2,6 +2,11 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var karma = require('karma').server;
+var _ = require('underscore');
+
+var browserifyOptions = {
+  extensions: ['.coffee']
+};
 
 gulp.task('test', function() {
 
@@ -16,10 +21,9 @@ gulp.task('test', function() {
     },
     singleRun: false,
 
-    browserify: {
-      watch: true,
-      extensions: ['.coffee']
-    }
+    browserify: _({
+      watch: true
+    }).defaults(browserifyOptions)
 
   });
 
@@ -27,7 +31,11 @@ gulp.task('test', function() {
 
 gulp.task('watch', function() {
 
-  var bundler = watchify('./app/index.coffee')
+  var opts = _({
+    entries: ['./app/index.coffee']
+  }).defaults(browserifyOptions);
+
+  var bundler = watchify(opts);
 
   var rebundle = function() {
 

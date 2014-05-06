@@ -13,17 +13,14 @@
     "aliasify": "~1.4.0",
     "coffeeify": "~0.6.0",
     "trabian-webapp-core": "*",
-    "karma-browserify": "~0.2.0"
+    "karma-browserify": "~0.2.0",
+    "underscore": "~1.6.0"
   },
   "browserify": {
     "transform": [
       "coffeeify",
       "aliasify"
-    ],
-    "extensions": [
-      ".coffee"
-    ],
-    "debug": true
+    ]
   },
   "aliasify": {
     "aliases": {

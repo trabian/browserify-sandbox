@@ -2,14 +2,19 @@
 module.exports = {
   someVar: 'someVal',
   helper: require('./lib/helper'),
+  coffeeHelper: require('./lib/coffee-helper'),
   core: require('trabian-webapp-core')
 };
 
 
-},{"./lib/helper":2,"trabian-webapp-core":3}],2:[function(require,module,exports){
-module.exports = 'helper.js';
+},{"./lib/coffee-helper":2,"./lib/helper":3,"trabian-webapp-core":4}],2:[function(require,module,exports){
+module.exports = 'coffee-helper.coffee';
+
 
 },{}],3:[function(require,module,exports){
+module.exports = 'helper.js';
+
+},{}],4:[function(require,module,exports){
 module.exports = {
   myPath: 'trabian-webapp-core/index.coffee'
 };
