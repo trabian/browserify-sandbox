@@ -15,9 +15,9 @@ gulp.task('test', function() {
       'app/**/__tests__/*.js': ['browserify']
     },
     singleRun: false,
+
     browserify: {
-      watch: true,
-      debug: true
+      watch: true
     }
 
   });
@@ -26,7 +26,7 @@ gulp.task('test', function() {
 
 gulp.task('watch', function() {
 
-  var bundler = watchify('./app/index.js');
+  var bundler = watchify('./app/index.js')
 
   var rebundle = function() {
 

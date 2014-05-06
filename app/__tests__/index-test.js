@@ -1,15 +1,19 @@
 var assert = require('assert');
 
+var entry = require('../index');
+
 describe('The entry point', function() {
 
   it('should expose someVar', function() {
-    var entry = require('../index');
     assert(entry.someVar === 'someVal');
   });
 
   it('should expose helper', function() {
-    var entry = require('../index');
     assert(entry.helper === 'helper.js');
+  });
+
+  it('should be able to pull from another module', function() {
+    assert(entry.core === 'trabian-webapp-core/index.js');
   });
 
 });
