@@ -13,7 +13,6 @@ describe('The entry point', function() {
   });
 
   it('should be able to pull from another module', function() {
-    console.warn('myPath', entry.core.myPath);
     assert(entry.core.myPath === 'trabian-webapp-core/index.coffee');
   });
 
