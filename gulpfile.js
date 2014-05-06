@@ -3,31 +3,58 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var karma = require('karma').server;
 var _ = require('underscore');
+var glob = require('glob');
 
 var browserifyOptions = {
   extensions: ['.coffee']
 };
 
-gulp.task('test', function() {
+gulp.task('build-test', function() {
+
+  var testFiles = glob.sync('./app/**/__tests__/*.js');
+
+  var opts = _({
+    entries: testFiles
+  }).defaults(browserifyOptions);
+
+  var bundler = watchify(opts);
+
+  var rebundle = function() {
+
+    bundler.bundle()
+
+    .on('error', function(err) {
+      console.warn('error', err);
+    })
+
+    .pipe(source('tests.js'))
+    .pipe(gulp.dest('./dist'))
+
+  };
+
+  bundler.on('update', rebundle);
+
+  rebundle()
+
+  // console.warn('testFiles', testFiles);
+
+});
+
+gulp.task('karma', function() {
 
   karma.start({
-    frameworks: ['mocha', 'browserify'],
+    frameworks: ['mocha'],
     browsers: ['PhantomJS'],
+    autoWatch: true,
     files: [
-      'app/**/__tests__/*.js'
+      'dist/tests.js'
     ],
-    preprocessors: {
-      'app/**/__tests__/*.js': ['browserify']
-    },
-    singleRun: true,
-
-    browserify: _({
-      watch: true
-    }).defaults(browserifyOptions)
-
+    singleRun: false
   });
 
 });
+
+gulp.task('test', ['build-test', 'karma']);
 
 gulp.task('watch', function() {
 

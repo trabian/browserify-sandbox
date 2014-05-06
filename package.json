@@ -14,7 +14,8 @@
     "coffeeify": "~0.6.0",
     "trabian-webapp-core": "*",
     "karma-browserify": "~0.2.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "glob": "~3.2.9"
   },
   "browserify": {
     "transform": [
