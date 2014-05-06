@@ -17,7 +17,8 @@ gulp.task('test', function() {
     singleRun: false,
 
     browserify: {
-      watch: true
+      watch: true,
+      extensions: ['.coffee']
     }
 
   });
@@ -26,7 +27,7 @@ gulp.task('test', function() {
 
 gulp.task('watch', function() {
 
-  var bundler = watchify('./app/index.js')
+  var bundler = watchify('./app/index.coffee')
 
   var rebundle = function() {
 

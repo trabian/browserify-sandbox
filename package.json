@@ -18,10 +18,17 @@
     "karma-phantomjs-launcher": "~0.1.4",
     "browserify": "~3.46.0",
     "karma-browserify": "~0.2.0",
-    "aliasify": "~1.4.0"
+    "aliasify": "~1.4.0",
+    "coffeeify": "~0.6.0"
   },
   "browserify": {
-    "transform": ["aliasify"],
+    "transform": [
+      "coffeeify",
+      "aliasify"
+    ],
+    "extensions": [
+      ".coffee"
+    ],
     "debug": true
   },
   "aliasify": {

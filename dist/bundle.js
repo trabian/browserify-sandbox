@@ -5,10 +5,14 @@ module.exports = {
   core: require('trabian-webapp-core')
 };
 
+
 },{"./lib/helper":2,"trabian-webapp-core":3}],2:[function(require,module,exports){
 module.exports = 'helper.js';
 
 },{}],3:[function(require,module,exports){
-module.exports = 'trabian-webapp-core/index.js';
+module.exports = {
+  myPath: 'trabian-webapp-core/index.coffee'
+};
+
 
 },{}]},{},[1])
