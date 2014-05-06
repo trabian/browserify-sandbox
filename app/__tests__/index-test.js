@@ -12,6 +12,10 @@ describe('The entry point', function() {
     assert(entry.helper === 'helper.js');
   });
 
+  it('should expose helper', function() {
+    assert(entry.coffeeHelper === 'coffee-helper.coffee');
+  });
+
   it('should be able to pull from another module', function() {
     assert(entry.core.myPath === 'trabian-webapp-core/index.coffee');
   });
