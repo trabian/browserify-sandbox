@@ -6,12 +6,20 @@ var karma = require('karma').server;
 gulp.task('test', function() {
 
   karma.start({
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'browserify'],
     browsers: ['PhantomJS'],
     files: [
       'app/**/__tests__/*.js'
     ],
-    singleRun: true
+    preprocessors: {
+      'app/**/__tests__/*.js': ['browserify']
+    },
+    singleRun: false,
+    browserify: {
+      watch: true,
+      debug: true
+    }
+
   });
 
 });
@@ -24,8 +32,8 @@ gulp.task('watch', function() {
 
     bundler.bundle()
 
-    .on('error', function() {
-
+    .on('error', function(err) {
+      console.warn('error', err);
     })
 
     .pipe(source('bundle.js'))

@@ -1,3 +1,4 @@
 module.exports = {
-  someVar: 'someVal'
+  someVar: 'someVal',
+  helper: require('./lib/helper')
 };
