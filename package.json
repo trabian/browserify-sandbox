@@ -25,7 +25,8 @@
   },
   "aliasify": {
     "aliases": {
-      "core": "trabian-webapp-core"
+      "core": "trabian-webapp-core",
+      "app": "./app"
     }
   }
 }

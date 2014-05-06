@@ -23,7 +23,7 @@ describe('The entry point', function() {
 
 });
 
-},{"../index":2,"assert":8}],2:[function(require,module,exports){
+},{"../index":2,"assert":9}],2:[function(require,module,exports){
 module.exports = {
   someVar: 'someVal',
   helper: require('./lib/helper'),
@@ -32,7 +32,7 @@ module.exports = {
 };
 
 
-},{"./lib/coffee-helper":3,"./lib/helper":4,"trabian-webapp-core":7}],3:[function(require,module,exports){
+},{"./lib/coffee-helper":3,"./lib/helper":4,"trabian-webapp-core":8}],3:[function(require,module,exports){
 module.exports = 'coffee-helper.coffee';
 
 
@@ -40,6 +40,20 @@ module.exports = 'coffee-helper.coffee';
 module.exports = 'helper.js';
 
 },{}],5:[function(require,module,exports){
+var assert;
+
+assert = require('assert');
+
+describe('Requiring nested files', function() {
+  return it('should not cause an error', function() {
+    var a;
+    a = require('../index');
+    return assert(a.coffeeHelper === 'coffee-helper.coffee');
+  });
+});
+
+
+},{"../index":7,"assert":9}],6:[function(require,module,exports){
 var assert = require('assert');
 
 describe('Requiring nested files', function () {
@@ -51,19 +65,19 @@ describe('Requiring nested files', function () {
 
 });
 
-},{"../index":6,"assert":8}],6:[function(require,module,exports){
+},{"../index":7,"assert":9}],7:[function(require,module,exports){
 module.exports = {
-  coffeeHelper: require('../../coffee-helper.coffee')
+  coffeeHelper: require('./../../coffee-helper.coffee')
 };
 
 
-},{"../../coffee-helper.coffee":3}],7:[function(require,module,exports){
+},{"./../../coffee-helper.coffee":3}],8:[function(require,module,exports){
 module.exports = {
   myPath: 'trabian-webapp-core/index.coffee'
 };
 
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -425,14 +439,14 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":10}],9:[function(require,module,exports){
+},{"util/":11}],10:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1022,7 +1036,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require("/Users/mattdean/dev/learning/browserifyv2/sandbox/node_modules/watchify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":9,"/Users/mattdean/dev/learning/browserifyv2/sandbox/node_modules/watchify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":12,"inherits":11}],11:[function(require,module,exports){
+},{"./support/isBuffer":10,"/Users/mattdean/dev/learning/browserifyv2/sandbox/node_modules/watchify/node_modules/browserify/node_modules/insert-module-globals/node_modules/process/browser.js":13,"inherits":12}],12:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -1047,7 +1061,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -1109,4 +1123,4 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}]},{},[1,5])
+},{}]},{},[1,5,6])

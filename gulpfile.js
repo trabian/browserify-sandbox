@@ -11,7 +11,7 @@ var browserifyOptions = {
 
 gulp.task('build-test', function() {
 
-  var testFiles = glob.sync('./app/**/__tests__/*.js');
+  var testFiles = glob.sync('./app/**/__tests__/*.{js,coffee}');
 
   var opts = _({
     entries: testFiles

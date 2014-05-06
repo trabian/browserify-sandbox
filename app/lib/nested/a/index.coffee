@@ -1,3 +1,3 @@
 module.exports =
 
-  coffeeHelper: require '../../coffee-helper.coffee'
+  coffeeHelper: require 'app/lib/coffee-helper.coffee'
