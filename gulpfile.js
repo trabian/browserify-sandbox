@@ -19,7 +19,7 @@ gulp.task('test', function() {
     preprocessors: {
       'app/**/__tests__/*.js': ['browserify']
     },
-    singleRun: false,
+    singleRun: true,
 
     browserify: _({
       watch: true
